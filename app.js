@@ -336,12 +336,10 @@ function renderDynamicLang(){
   const hero = $(".hero-title");
   if(hero) hero.innerHTML = `${t("heroPre")} <span class="hi">${escapeHtml(u)}</span>${t("heroPost")}<span class="hi-yellow">${t("heroBad")}</span>${t("heroEnd")}`;
   // 若目前在某些動態畫面，重新渲染
-  if(!$("#app").classList.contains("hidden")){
-    renderHome(); 
-    if($("#view-articles").classList.contains("active")) renderTopics();
-    if($("#view-memes").classList.contains("active")) renderMemes();
-    if($("#view-vocab").classList.contains("active")) renderVocab();
-  }
+  if($("#view-home").classList.contains("active")) renderHome();
+if($("#view-articles").classList.contains("active")) renderTopics();
+if($("#view-memes").classList.contains("active")) renderMemes();
+if($("#view-vocab").classList.contains("active")) renderVocab();
 }
 
 /* ============================================================
@@ -416,7 +414,6 @@ $("#go-home").addEventListener("click", () => go("home"));
    8. 首頁統計
    ============================================================ */
 function renderHome(){
-  renderDynamicLang === undefined ? null : null;
   const vocab = getVocab().length;
   const memes = getMemes().length;
   const stats = getStats();
